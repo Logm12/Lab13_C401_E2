@@ -76,7 +76,7 @@
   - Truy vấn Logs qua Correlation ID `req-d3f13bc4` để chứng minh nguyên nhân gốc rễ.
   - Triển khai giải pháp khắc phục bằng In-memory Cache trong `app/mock_rag.py` giúp giảm độ trễ cho các yêu cầu lặp lại.
   - Cập nhật Alert Rules và Runbook để cải thiện khả năng ứng phó sự cố trong tương lai.
-- [EVIDENCE_LINK]: [Link](https://github.com/Logm12/Lab13_C401_E2/commits/main/)
+- [EVIDENCE_LINK](https://github.com/Logm12/Lab13_C401_E2/commits/main/)
 
 ### [MEMBER_E_NAME]
 - [TASKS_COMPLETED]: 
