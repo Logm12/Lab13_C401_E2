@@ -6,7 +6,7 @@
 
 ## 1. Team Metadata
 
-- **[GROUP_NAME]**: Chatbot AI trong Chăm sóc Khách hàng Thương mại Điện tử tại Việt Nam
+- **[GROUP_NAME]**: C401-E2-Chatbot AI trong Chăm sóc Khách hàng Thương mại Điện tử tại Việt Nam
 - **[REPO_URL]**: https://github.com/Logm12/Lab13_C401_E2
 - **[MEMBERS]**:
 
