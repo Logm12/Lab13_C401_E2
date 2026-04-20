@@ -83,7 +83,7 @@
 ### [MEMBER_B_NAME]: Mạc Phạm Thiên Long — Phase 2: Tracing + Tags
 
 - **[TASKS_COMPLETED]**: Phụ trách Phase 2 — triển khai tích hợp Langfuse tracing cho hệ thống. Sử dụng decorator `@observe` để tracking luồng xử lý từ request đến RAG và LLM. Cấu hình enrichment metadata gồm `user_id`, `session_id`, `tags` để truy vết chính xác theo ngữ cảnh E-commerce. Đảm bảo thu thập đầy đủ evidence trace waterfall phục vụ phân tích latency và root cause incident.
-- **[EVIDENCE_LINK]**: https://github.com/Logm12/Lab13_C401_E2/commit/895bb9874d1bc37851dfa8ce675b06d51a275f66
+- **[EVIDENCE_LINK]**: [https://github.com/Logm12/Lab13_C401_E2/commit/895bb9874d1bc37851dfa8ce675b06d51a275f66](https://github.com/Logm12/Lab13_C401_E2/commit/7abd60720007b794b74d47c44cbb106197435627)
 
 ---
 
