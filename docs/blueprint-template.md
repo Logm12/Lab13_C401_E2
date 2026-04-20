@@ -96,7 +96,7 @@ The trace completed in only 0.16s with an input/output token ratio of 33→152, 
   - Nâng cấp `app/metrics.py`: thêm `METRIC_HISTORY`, `_append_history_point()`, `history()`, `error_rate_pct()` để dashboard có time-series data
   - Cập nhật `config/slo.yaml` với group target: P95 < 2500ms, error < 1%, cost < $2/day
   - Tạo `docs/evidence/` với screenshot dashboard 6 panels
-- [EVIDENCE_LINK](https://github.com/Logm12/Lab13_C401_E2/commit/54a6593e3a55d404b5f9a6abfdd7e3b6a917484a)
+- [EVIDENCE_LINK](https://github.com/Logm12/Lab13_C401_E2/commit/a02c86e94074edaeacec54fd660db5457854c34e)
 
 #### Giải thích kỹ thuật (B1 — Individual Report Quality)
 
