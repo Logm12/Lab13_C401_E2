@@ -39,20 +39,9 @@ def _normalize(text: str) -> str:
     return text.lower()
 
 
-# Simple In-memory Cache for Phase 4 Fix Action
-_CACHE: dict[str, list[str]] = {}
-
-
 def retrieve(message: str) -> list[str]:
     if STATE["tool_fail"]:
         raise RuntimeError("Công cụ tra cứu đơn hàng/tồn kho bị timeout")
-    
-    lowered = _normalize(message)
-
-    # FIX: Check cache first to mitigate RAG latency
-    if lowered in _CACHE:
-        return _CACHE[lowered]
-
     if STATE["rag_slow"]:
         time.sleep(2.5)
     lowered = _normalize(message)
@@ -70,9 +59,5 @@ def retrieve(message: str) -> list[str]:
 
     for corpus_key, keywords in keyword_map.items():
         if any(keyword in lowered for keyword in keywords):
-            result = CORPUS[corpus_key]
-            # Update cache for future requests
-            _CACHE[lowered] = result
-            return result
-
+            return CORPUS[corpus_key]
     return ["Không tìm thấy tài liệu miền phù hợp. Chatbot nên dùng câu trả lời FAQ tổng quát và hướng dẫn khách cung cấp thêm thông tin."]
