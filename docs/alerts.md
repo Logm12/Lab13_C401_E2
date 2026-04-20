@@ -3,38 +3,38 @@
 ## 1. High latency P95
 - Severity: P2
 - Trigger: `latency_p95_ms > 5000 for 30m`
-- Impact: tail latency breaches SLO
+- Impact: chatbot CSKH phản hồi chậm, khách phải chờ lâu trong giờ cao điểm sale
 - First checks:
-  1. Open top slow traces in the last 1h
-  2. Compare RAG span vs LLM span
-  3. Check if incident toggle `rag_slow` is enabled
+  1. Mở các trace chậm nhất trong 1 giờ gần nhất
+  2. So sánh span retrieval chính sách đơn hàng với span sinh phản hồi
+  3. Kiểm tra incident toggle `rag_slow` có đang bật hay không
 - Mitigation:
-  - truncate long queries
-  - fallback retrieval source
-  - lower prompt size
+  - rút gọn prompt cho các câu hỏi FAQ lặp lại
+  - chuyển sang nguồn FAQ fallback nếu retrieval chính quá chậm
+  - ưu tiên câu trả lời mẫu ngắn gọn cho khung giờ flash sale
 
 ## 2. High error rate
 - Severity: P1
 - Trigger: `error_rate_pct > 5 for 5m`
-- Impact: users receive failed responses
+- Impact: khách không tra cứu được đơn hàng, hoàn tiền hoặc đổi trả
 - First checks:
-  1. Group logs by `error_type`
-  2. Inspect failed traces
-  3. Determine whether failures are LLM, tool, or schema related
+  1. Nhóm log theo `error_type`
+  2. Kiểm tra trace của request lỗi gần nhất
+  3. Xác định lỗi đến từ tra cứu đơn hàng, tồn kho, hay bước sinh phản hồi
 - Mitigation:
-  - rollback latest change
-  - disable failing tool
-  - retry with fallback model
+  - tạm tắt công cụ tra cứu lỗi và trả về thông báo fallback
+  - kiểm tra dịch vụ tra cứu đơn hàng/tồn kho
+  - retry bằng phản hồi mẫu hoặc model fallback nếu phù hợp
 
 ## 3. Cost budget spike
 - Severity: P2
 - Trigger: `hourly_cost_usd > 2x_baseline for 15m`
-- Impact: burn rate exceeds budget
+- Impact: chi phí chatbot tăng nhanh trong khung giờ sale lớn
 - First checks:
-  1. Split traces by feature and model
-  2. Compare tokens_in/tokens_out
-  3. Check if `cost_spike` incident was enabled
+  1. Chia trace theo feature và model
+  2. So sánh `tokens_in` và `tokens_out` giữa các request
+  3. Kiểm tra incident `cost_spike` có đang bật hay không
 - Mitigation:
-  - shorten prompts
-  - route easy requests to cheaper model
-  - apply prompt cache
+  - rút gọn prompt và response template cho FAQ
+  - chuyển các câu hỏi đơn giản sang luồng trả lời rẻ hơn
+  - cache các truy vấn lặp lại như giao hàng, đổi trả, hoàn tiền
